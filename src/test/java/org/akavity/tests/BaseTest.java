@@ -4,8 +4,13 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.qameta.allure.selenide.LogType;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,15 +20,18 @@ import java.util.logging.Level;
 import static com.codeborne.selenide.Browsers.CHROME;
 import static com.codeborne.selenide.Selenide.*;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Execution(ExecutionMode.CONCURRENT)
 public class BaseTest {
     private final ResourceBundle bundle = ResourceBundle.getBundle("test_framework");
     private final String URL = bundle.getString("path_to_url");
 
-    @BeforeClass
-    @Parameters({"startType", "browser", "version"})
-    public void start(String startType,
-                      @Optional("browser") String browser,
-                      @Optional("version") String version) {
+    @BeforeAll
+    public void start() {
+        String startType = System.getProperty("startType", bundle.getString("test.startType"));
+        String browser = System.getProperty("browser", bundle.getString("test.browser"));
+        String version = System.getProperty("version", bundle.getString("test.version"));
+
         if (startType.equals("local")) {
             startLocal();
         } else if (startType.equals("selenoid")) {
@@ -31,12 +39,12 @@ public class BaseTest {
         }
     }
 
-    @BeforeMethod
+    @BeforeEach
     public void goToUrl() {
         open(URL);
     }
 
-    @AfterMethod
+    @AfterEach
     public void clearData() {
         clearBrowserLocalStorage();
         clearBrowserCookies();

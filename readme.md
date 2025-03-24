@@ -23,7 +23,7 @@
 
 * Java 17
 * Gradle
-* TestNG 7.10.2
+* JUnit 5.9.2
 * Selenide 7.7.1
 * Allure 2.29.1
 * Apache Log4j 2.24.3

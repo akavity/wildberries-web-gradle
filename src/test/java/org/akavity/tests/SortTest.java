@@ -7,8 +7,11 @@ import org.akavity.steps.FilterDropDownSteps;
 import org.akavity.steps.HeaderSteps;
 import org.akavity.steps.NavigationSteps;
 import org.akavity.utils.JsonReader;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
+
 
 public class SortTest extends BaseTest {
     HeaderSteps headerSteps = new HeaderSteps();
@@ -16,8 +19,10 @@ public class SortTest extends BaseTest {
     FilterDropDownSteps filterDDSteps = new FilterDropDownSteps();
     CatalogSteps catalogSteps = new CatalogSteps();
 
-    @TestData(jsonFile = "priceData", model = "PriceData", folder = "sortTest")
-    @Test(description = "Check that product prices are within the limit", dataProviderClass = JsonReader.class, dataProvider = "getData")
+    @ParameterizedTest
+    @ArgumentsSource(JsonReader.class)
+    @TestData(folder = "sortTest", jsonFile = "priceData", model = "PriceData")
+    @DisplayName("Check that product prices are within the limit")
     public void sortProductsByPrice(PriceData price) {
         headerSteps.clickCatalogButton();
         navigationSteps.clickMainListItem(price.getMainListItem());
@@ -25,6 +30,6 @@ public class SortTest extends BaseTest {
         filterDDSteps.clickButtonDDF(price.getButton());
         filterDDSteps.enterMinMaxAmount(price.getMinPrice(), price.getMaxPrice());
 
-        Assert.assertTrue(catalogSteps.areProductPricesWithinLimit(price.getMinPrice(), price.getMaxPrice()));
+        Assertions.assertTrue(catalogSteps.areProductPricesWithinLimit(price.getMinPrice(), price.getMaxPrice()));
     }
 }

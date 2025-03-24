@@ -7,36 +7,45 @@ import org.akavity.models.faqTest.RefundPaymentData;
 import org.akavity.steps.HeaderSteps;
 import org.akavity.steps.InfoSteps;
 import org.akavity.utils.JsonReader;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
+
 
 public class FAQTest extends BaseTest {
     HeaderSteps headerSteps = new HeaderSteps();
     InfoSteps infoSteps = new InfoSteps();
 
-    @TestData(jsonFile = "faqData", model = "FaqData", folder = "faqTest")
-    @Test(description = "Select frequently asked question", dataProviderClass = JsonReader.class, dataProvider = "getData")
+    @ParameterizedTest
+    @ArgumentsSource(JsonReader.class)
+    @TestData(folder = "faqTest", jsonFile = "faqData", model = "FaqData")
+    @DisplayName("Select frequently asked question")
     public void selectFAQ(FaqData faqData) {
         headerSteps.clickAddressButton();
         infoSteps.clickServiceMenuItem(faqData.getServiceMenuItem());
         infoSteps.clickFAQMenuItem(faqData.getFaqMenuItem());
         infoSteps.clickDropDownTitle(faqData.getTitle());                    // without iframe
 
-        Assert.assertTrue(infoSteps.isDropDownContentDisplayed(faqData.getTitle(), faqData.getContent()));
+        Assertions.assertTrue(infoSteps.isDropDownContentDisplayed(faqData.getTitle(), faqData.getContent()));
     }
 
-    @TestData(jsonFile = "refundPaymentData", model = "RefundPaymentData", folder = "faqTest")
-    @Test(description = "Check information about refund and payment methods", dataProviderClass = JsonReader.class, dataProvider = "getData")
+    @ParameterizedTest
+    @ArgumentsSource(JsonReader.class)
+    @TestData(folder = "faqTest", jsonFile = "refundPaymentData", model = "RefundPaymentData")
+    @DisplayName("Check information about refund and payment methods")
     public void checkRefundAndPaymentInfo(RefundPaymentData refundPayment) {
         headerSteps.clickAddressButton();
         infoSteps.clickServiceMenuItem(refundPayment.getMenuItem());
         infoSteps.clickDropDownTitle(refundPayment.getTitle());              // with iframe
 
-        Assert.assertTrue(infoSteps.isDropDownContentDisplayed(refundPayment.getTitle(), refundPayment.getContent()));
+        Assertions.assertTrue(infoSteps.isDropDownContentDisplayed(refundPayment.getTitle(), refundPayment.getContent()));
     }
 
-    @TestData(jsonFile = "questionData", model = "QuestionData", folder = "faqTest")
-    @Test(description = "Search for a question in the frequently asked questions", dataProviderClass = JsonReader.class, dataProvider = "getData")
+    @ParameterizedTest
+    @ArgumentsSource(JsonReader.class)
+    @TestData(folder = "faqTest", jsonFile = "questionData", model = "QuestionData")
+    @DisplayName("Search for a question in the frequently asked questions")
     public void searchForQuestion(QuestionData questionData) {
         headerSteps.clickAddressButton();
         infoSteps.clickServiceMenuItem(questionData.getMenuItem());
@@ -44,6 +53,6 @@ public class FAQTest extends BaseTest {
         infoSteps.clickFirstSearchResultButton();
         infoSteps.clickSearchDropDownTitle();
 
-        Assert.assertTrue(infoSteps.isFAQTitleDisplayed(questionData.getTitle()));
+        Assertions.assertTrue(infoSteps.isFAQTitleDisplayed(questionData.getTitle()));
     }
 }
