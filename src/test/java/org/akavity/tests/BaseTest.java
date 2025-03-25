@@ -31,14 +31,14 @@ public class BaseTest {
             startBrowser();
             initialized.set(true);
         }
-        open(BUNDLE.getString("path_to_url")); // Открываем страницу в каждом потоке
+        open(BUNDLE.getString("path_to_url"));
     }
 
     @AfterEach
     public void tearDown() {
         clearBrowserLocalStorage();
         clearBrowserCookies();
-        closeWebDriver(); // Закрываем WebDriver в конце теста
+        closeWebDriver();
         initialized.set(false);
     }
 

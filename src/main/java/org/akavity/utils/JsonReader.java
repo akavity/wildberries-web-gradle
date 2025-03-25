@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 public class JsonReader implements ArgumentsProvider {
-    private static final Gson GSON = new Gson(); // Singleton Gson (потокобезопасный)
+    private static final Gson GSON = new Gson();
 
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext context) throws Exception {
@@ -32,20 +32,17 @@ public class JsonReader implements ArgumentsProvider {
                 + testDataAnnotation.folder() + "/"
                 + testDataAnnotation.jsonFile() + ".json";
 
-        // Читаем JSON безопасно
         String jsonData;
         try (Reader reader = new FileReader(filePath)) {
             jsonData = JsonParser.parseReader(reader).toString();
         }
 
-        // Загружаем класс безопасно
         Class<?> modelClass;
-        synchronized (this) { // Синхронизируем загрузку класса
+        synchronized (this) {
             modelClass = Class.forName("org.akavity.models." + testDataAnnotation.folder()
                     + "." + testDataAnnotation.model());
         }
 
-        // Десериализация JSON
         List<?> list = GSON.fromJson(jsonData, TypeToken.getParameterized(List.class, modelClass).getType());
 
         return Objects.requireNonNull(list).stream().map(Arguments::of);
