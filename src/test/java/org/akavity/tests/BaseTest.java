@@ -5,7 +5,6 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.qameta.allure.selenide.LogType;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.parallel.Execution;
@@ -23,34 +22,39 @@ import static com.codeborne.selenide.Selenide.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Execution(ExecutionMode.CONCURRENT)
 public class BaseTest {
-    private final ResourceBundle bundle = ResourceBundle.getBundle("test_framework");
-    private final String URL = bundle.getString("path_to_url");
+    private static final ResourceBundle BUNDLE = ResourceBundle.getBundle("test_framework");
+    private static final ThreadLocal<Boolean> initialized = ThreadLocal.withInitial(() -> false);
 
-    @BeforeAll
-    public void start() {
-        String startType = System.getProperty("startType", bundle.getString("test.startType"));
-        String browser = System.getProperty("browser", bundle.getString("test.browser"));
-        String version = System.getProperty("version", bundle.getString("test.version"));
+    @BeforeEach
+    public void setUp() {
+        if (!initialized.get()) {
+            startBrowser();
+            initialized.set(true);
+        }
+        open(BUNDLE.getString("path_to_url"));
+    }
 
-        if (startType.equals("local")) {
+    @AfterEach
+    public void tearDown() {
+        clearBrowserLocalStorage();
+        clearBrowserCookies();
+        closeWebDriver();
+        initialized.set(false);
+    }
+
+    private synchronized void startBrowser() {
+        String startType = System.getProperty("startType", BUNDLE.getString("test.startType"));
+        String browser = System.getProperty("browser", BUNDLE.getString("test.browser"));
+        String version = System.getProperty("version", BUNDLE.getString("test.version"));
+
+        if ("local".equals(startType)) {
             startLocal();
-        } else if (startType.equals("selenoid")) {
+        } else if ("selenoid".equals(startType)) {
             startSelenoid(browser, version);
         }
     }
 
-    @BeforeEach
-    public void goToUrl() {
-        open(URL);
-    }
-
-    @AfterEach
-    public void clearData() {
-        clearBrowserLocalStorage();
-        clearBrowserCookies();
-    }
-
-    public static void startLocal() {
+    private static void startLocal() {
         SelenideLogger.addListener("allure", new AllureSelenide()
                 .screenshots(true)
                 .savePageSource(true)
@@ -59,7 +63,7 @@ public class BaseTest {
         Configuration.browser = CHROME;
     }
 
-    public static void startSelenoid(String browser, String version) {
+    private static void startSelenoid(String browser, String version) {
         SelenideLogger.addListener("allure", new AllureSelenide()
                 .screenshots(true)
                 .savePageSource(true)
