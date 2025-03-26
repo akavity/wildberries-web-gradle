@@ -1,5 +1,6 @@
 package org.akavity.tests;
 
+import io.qameta.allure.Description;
 import org.akavity.annotations.TestData;
 import org.akavity.models.faqTest.FaqData;
 import org.akavity.models.faqTest.QuestionData;
@@ -8,7 +9,6 @@ import org.akavity.steps.HeaderSteps;
 import org.akavity.steps.InfoSteps;
 import org.akavity.utils.JsonReader;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
@@ -20,7 +20,7 @@ public class FAQTest extends BaseTest {
     @ParameterizedTest
     @ArgumentsSource(JsonReader.class)
     @TestData(folder = "faqTest", jsonFile = "faqData", model = "FaqData")
-    @DisplayName("Select frequently asked question")
+    @Description("Select frequently asked question")
     public void selectFAQ(FaqData faqData) {
         headerSteps.clickAddressButton();
         infoSteps.clickServiceMenuItem(faqData.getServiceMenuItem());
@@ -33,7 +33,7 @@ public class FAQTest extends BaseTest {
     @ParameterizedTest
     @ArgumentsSource(JsonReader.class)
     @TestData(folder = "faqTest", jsonFile = "refundPaymentData", model = "RefundPaymentData")
-    @DisplayName("Check information about refund and payment methods")
+    @Description("Check information about refund and payment methods")
     public void checkRefundAndPaymentInfo(RefundPaymentData refundPayment) {
         headerSteps.clickAddressButton();
         infoSteps.clickServiceMenuItem(refundPayment.getMenuItem());
@@ -45,7 +45,7 @@ public class FAQTest extends BaseTest {
     @ParameterizedTest
     @ArgumentsSource(JsonReader.class)
     @TestData(folder = "faqTest", jsonFile = "questionData", model = "QuestionData")
-    @DisplayName("Search for a question in the frequently asked questions")
+    @Description("Search for a question in the frequently asked questions")
     public void searchForQuestion(QuestionData questionData) {
         headerSteps.clickAddressButton();
         infoSteps.clickServiceMenuItem(questionData.getMenuItem());

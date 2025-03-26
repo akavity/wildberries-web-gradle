@@ -1,11 +1,11 @@
 package org.akavity.tests;
 
+import io.qameta.allure.Description;
 import org.akavity.annotations.TestData;
 import org.akavity.models.headerTest.*;
 import org.akavity.steps.*;
 import org.akavity.utils.JsonReader;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
@@ -20,7 +20,7 @@ public class HeaderTest extends BaseTest {
     @ParameterizedTest
     @ArgumentsSource(JsonReader.class)
     @TestData(folder = "headerTest", jsonFile = "catalogData", model = "CatalogData")
-    @DisplayName("Import class")
+    @Description("Import class")
     public void catalogNavigation(CatalogData catalog) {
         headerSteps.clickCatalogButton();
         navigationSteps.clickMainListItem(catalog.getMainListItem());
@@ -33,7 +33,7 @@ public class HeaderTest extends BaseTest {
     @ParameterizedTest
     @ArgumentsSource(JsonReader.class)
     @TestData(folder = "headerTest", jsonFile = "serviceMenuData", model = "ServiceMenuData")
-    @DisplayName("Service menu navigation")
+    @Description("Service menu navigation")
     public void serviceMenuNavigation(ServiceMenuData serviceMenuData) {
         headerSteps.clickAddressButton();
         headerSteps.clickServiceMenuItem(serviceMenuData.getItem());
@@ -44,15 +44,15 @@ public class HeaderTest extends BaseTest {
     @ParameterizedTest
     @ArgumentsSource(JsonReader.class)
     @TestData(folder = "headerTest", jsonFile = "currencyData", model = "CurrencyData")
-    @DisplayName("Select a currency type")
+    @Description("Select a currency type")
     public void selectCurrencyType(CurrencyData currencyData) {
         headerSteps.selectCurrency(currencyData.getCurrency());
 
         Assertions.assertTrue(catalogSteps.isCurrencyCorrect(currencyData.getSymbol()));
     }
 
-    @DisplayName("Select a pickup point")
     @Test
+    @Description("Select a pickup point")
     public void selectPickUpPoint() {
         headerSteps.clickGeolocationButton();
         geoSteps.clickFirstPickupPoint();
@@ -63,7 +63,7 @@ public class HeaderTest extends BaseTest {
     @ParameterizedTest
     @ArgumentsSource(JsonReader.class)
     @TestData(folder = "headerTest", jsonFile = "localWarehouseData", model = "LocalWarehouseData")
-    @DisplayName("Select a product from the local warehouse")
+    @Description("Select a product from the local warehouse")
     public void selectProductFromLocalWarehouse(LocalWarehouseData belGoods) {
         headerSteps.clickCatalogButton();
         navigationSteps.hoverMainListItem(belGoods.getMainListItem());
@@ -77,7 +77,7 @@ public class HeaderTest extends BaseTest {
     @ParameterizedTest
     @ArgumentsSource(JsonReader.class)
     @TestData(folder = "headerTest", jsonFile = "promotionData", model = "PromotionData")
-    @DisplayName("Select a promotion")
+    @Description("Select a promotion")
     public void selectPromotion(PromotionData promotion) {
         headerSteps.clickCatalogButton();
         navigationSteps.hoverMainListItem(promotion.getMainListItem());

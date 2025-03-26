@@ -1,5 +1,6 @@
 package org.akavity.tests;
 
+import io.qameta.allure.Description;
 import org.akavity.annotations.TestData;
 import org.akavity.models.sortTest.PriceData;
 import org.akavity.steps.CatalogSteps;
@@ -8,7 +9,6 @@ import org.akavity.steps.HeaderSteps;
 import org.akavity.steps.NavigationSteps;
 import org.akavity.utils.JsonReader;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
@@ -22,7 +22,7 @@ public class SortTest extends BaseTest {
     @ParameterizedTest
     @ArgumentsSource(JsonReader.class)
     @TestData(folder = "sortTest", jsonFile = "priceData", model = "PriceData")
-    @DisplayName("Check that product prices are within the limit")
+    @Description("Check that product prices are within the limit")
     public void sortProductsByPrice(PriceData price) {
         headerSteps.clickCatalogButton();
         navigationSteps.clickMainListItem(price.getMainListItem());

@@ -1,11 +1,11 @@
 package org.akavity.tests;
 
+import io.qameta.allure.Description;
 import org.akavity.annotations.TestData;
 import org.akavity.models.productTest.SearchData;
 import org.akavity.steps.*;
 import org.akavity.utils.JsonReader;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
@@ -22,7 +22,7 @@ public class ProductTest extends BaseTest {
     @ParameterizedTest
     @ArgumentsSource(JsonReader.class)
     @TestData(folder = "productTest", jsonFile = "searchData", model = "SearchData")
-    @DisplayName("Search by product name")
+    @Description("Search by product name")
     public void productSearch(SearchData searchData) {
         headerSteps.enterTextInSearchField(searchData.getText());
         headerSteps.clickLoupeButton();
@@ -31,7 +31,7 @@ public class ProductTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("View reviews")
+    @Description("View reviews")
     public void viewReviews() {
         catalogSteps.selectFirstProductCard();
         productSteps.clickViewAllCommentsButton();
@@ -40,7 +40,7 @@ public class ProductTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("View Questions")
+    @Description("View Questions")
     public void viewQuestions() {
         catalogSteps.selectFirstProductCard();
         productSteps.clickQuestionsButton();
@@ -50,7 +50,7 @@ public class ProductTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Open product popup")
+    @Description("Open product popup")
     public void openProductPopup() {
         String cardBrand = catalogSteps.getFirstProductCardBrand();
         double cardPrice = catalogSteps.getFirstProductCardPrice();
@@ -64,7 +64,7 @@ public class ProductTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Add product to basket")
+    @Description("Add product to basket")
     public void addProductToBasket() {
         double cardPrice = catalogSteps.getFirstProductCardPrice();
         catalogSteps.clickFirstButtonAddToBasket();
