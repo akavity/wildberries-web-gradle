@@ -6,15 +6,123 @@
     "title": "Свадебные платья"
   },
   {
+    "mainListItem": "Обувь",
+    "firstDropListItem": "Мужская",
+    "secondDropListItem": "Ботинки и полуботинки",
+    "title": "Мужские ботинки и полуботинки"
+  },
+  {
     "mainListItem": "Детям",
     "firstDropListItem": "Для новорожденных",
     "secondDropListItem": "Белье",
     "title": "Белье для новорожденных"
   },
   {
-    "mainListItem": "Обувь",
-    "firstDropListItem": "Мужская",
-    "secondDropListItem": "Ботинки и полуботинки",
-    "title": "Мужские ботинки и полуботинки"
+    "mainListItem": "Мужчинам",
+    "firstDropListItem": "Джинсы",
+    "secondDropListItem": "no",
+    "title": "Мужские джинсы"
+  },
+  {
+    "mainListItem": "Дом",
+    "firstDropListItem": "Спальня",
+    "secondDropListItem": "Коврики комнатные",
+    "title": "Коврики"
+  },
+  {
+    "mainListItem": "Красота",
+    "firstDropListItem": "Израильская косметика",
+    "secondDropListItem": "no",
+    "title": "Израильская косметика"
+  },
+  {
+    "mainListItem": "Аксессуары",
+    "firstDropListItem": "Очки и футляры",
+    "secondDropListItem": "Аксессуары для очков",
+    "title": "Аксессуары для очков"
+  },
+  {
+    "mainListItem": "Электроника",
+    "firstDropListItem": "Ноутбуки и компьютеры",
+    "secondDropListItem": "Графические планшеты",
+    "title": "Графические планшеты"
+  },
+  {
+    "mainListItem": "Игрушки",
+    "firstDropListItem": "Для малышей",
+    "secondDropListItem": "Каталки, качалки",
+    "title": "Качалки для малышей"
+  },
+  {
+    "mainListItem": "Мебель",
+    "firstDropListItem": "Компьютерная и геймерская мебель",
+    "secondDropListItem": "Кресла",
+    "title": "Кресла"
+  },
+  {
+    "mainListItem": "Товары для взрослых",
+    "firstDropListItem": "Белье и аксессуары",
+    "secondDropListItem": "no",
+    "title": "Эротическое женское белье"
+  },
+  {
+    "mainListItem": "Продукты",
+    "firstDropListItem": "Здоровое питание",
+    "secondDropListItem": "no",
+    "title": "Продукты здорового питания"
+  },
+  {
+    "mainListItem": "Бытовая техника",
+    "firstDropListItem": "Красота и здоровье",
+    "secondDropListItem": "Весы напольные",
+    "title": "Весы электронные"
+  },
+  {
+    "mainListItem": "Зоотовары",
+    "firstDropListItem": "Аквариумистика",
+    "secondDropListItem": "Декорации, растения",
+    "title": "Декорации и растения для аквариума"
+  },
+  {
+    "mainListItem": "Спорт",
+    "firstDropListItem": "Фитнес и тренажеры",
+    "secondDropListItem": "Аксессуары",
+    "title": "Аксессуары"
+  },
+  {
+    "mainListItem": "Автотовары",
+    "firstDropListItem": "Запчасти",
+    "secondDropListItem": "Топливная система",
+    "title": "Топливная система"
+  },
+  {
+    "mainListItem": "Книги",
+    "firstDropListItem": "Интернет и технологии",
+    "secondDropListItem": "no",
+    "title": "Интернет и технологии"
+  },
+  {
+    "mainListItem": "Для ремонта",
+    "firstDropListItem": "Электрика",
+    "secondDropListItem": "Розетки и выключатели",
+    "title": "Розетки и выключатели"
+  },
+  {
+    "mainListItem": "Сад и дача",
+    "firstDropListItem": "Полив и водоснабжение",
+    "secondDropListItem": "Шланги садовые",
+    "title": "Шланги садовые"
+  },
+  {
+    "mainListItem": "Здоровье",
+    "firstDropListItem": "Оптика",
+    "secondDropListItem": "no",
+    "title": "Контактные линзы и корригирующие очки"
+  },
+  {
+    "mainListItem": "Канцтовары",
+    "firstDropListItem": "Бумажная продукция",
+    "secondDropListItem": "Блокноты",
+    "title": "Блокноты"
   }
 ]

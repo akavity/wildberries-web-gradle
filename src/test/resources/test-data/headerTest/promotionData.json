@@ -4,5 +4,35 @@
     "firstDropListItem": "Туфли",
     "secondDropListItem": "no",
     "title": "Туфли и босоножки"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Тренчи",
+    "secondDropListItem": "no",
+    "title": "Верхняя женская одежда"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Одежда для дома",
+    "secondDropListItem": "no",
+    "title": "Пижамы и сорочки"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Футболки",
+    "secondDropListItem": "no",
+    "title": "Женские футболки и топы"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Женские худи",
+    "secondDropListItem": "no",
+    "title": "Толстовки женские"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "До -90%",
+    "secondDropListItem": "no",
+    "title": "Большие скидки"
   }
 ]

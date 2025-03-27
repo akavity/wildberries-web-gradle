@@ -7,5 +7,167 @@
     "secondContentItem": "Блузки и рубашки",
     "thirdContentItem": "no",
     "title": "Блузки и рубашки"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Обувь",
+    "secondContentItem": "Детская",
+    "thirdContentItem": "no",
+    "title": "Детская"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Детям",
+    "secondContentItem": "Для мальчиков",
+    "thirdContentItem": "Белье",
+    "title": "Белье"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Красота",
+    "secondContentItem": "Для загара",
+    "thirdContentItem": "no",
+    "title": "Для загара"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Аксессуары",
+    "secondContentItem": "Головные уборы",
+    "thirdContentItem": "no",
+    "title": "Головные уборы"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Электроника",
+    "secondContentItem": "Игровые консоли и игры",
+    "thirdContentItem": "Геймпады",
+    "title": "Геймпады"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Игрушки",
+    "secondContentItem": "Антистресс",
+    "thirdContentItem": "no",
+    "title": "Антистресс"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Мебель",
+    "secondContentItem": "Матрасы",
+    "thirdContentItem": "Наматрасники",
+    "title": "Наматрасники"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Товары для взрослых",
+    "secondContentItem": "Белье и аксессуары",
+    "thirdContentItem": "no",
+    "title": "Белье и аксессуары"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Продукты",
+    "secondContentItem": "Бакалея",
+    "thirdContentItem": "no",
+    "title": "Бакалея"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "",
+    "secondContentItem": "",
+    "thirdContentItem": "",
+    "title": ""
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Бытовая техника",
+    "secondContentItem": "Техника для кухни",
+    "thirdContentItem": "no",
+    "title": "Техника для кухни"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Зоотовары",
+    "secondContentItem": "Для лошадей",
+    "thirdContentItem": "no",
+    "title": "Для лошадей"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Спорт",
+    "secondContentItem": "Туризм/Походы",
+    "thirdContentItem": "Кемпинговая мебель",
+    "title": "Кемпинговая мебель"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Автотовары",
+    "secondContentItem": "Краски и грунтовки",
+    "thirdContentItem": "Краски автомобильные",
+    "title": "Краски автомобильные"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Книги",
+    "secondContentItem": "Комиксы и манга",
+    "thirdContentItem": "no",
+    "title": "Комиксы и манга"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Для ремонта",
+    "secondContentItem": "Спецодежда и СИЗы",
+    "thirdContentItem": "no",
+    "title": "Спецодежда и СИЗы"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Сад и дача",
+    "secondContentItem": "Горшки, кашпо и подставки для растений",
+    "thirdContentItem": "no",
+    "title": "Горшки, кашпо и подставки для растений"
+  },
+  {
+    "mainListItem": "Акции",
+    "firstDropListItem": "Товары с местного склада",
+    "secondDropListItem": "no",
+    "firstContentItem": "Канцтовары",
+    "secondContentItem": "Рисование и лепка",
+    "thirdContentItem": "no",
+    "title": "Рисование и лепка"
   }
 ]
