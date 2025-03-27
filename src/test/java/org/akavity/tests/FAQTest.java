@@ -5,6 +5,7 @@ import org.akavity.annotations.TestData;
 import org.akavity.models.faqTest.FaqData;
 import org.akavity.models.faqTest.QuestionData;
 import org.akavity.models.faqTest.RefundPaymentData;
+import org.akavity.models.faqTest.ServiceMenuData;
 import org.akavity.steps.HeaderSteps;
 import org.akavity.steps.InfoSteps;
 import org.akavity.utils.JsonReader;
@@ -54,5 +55,16 @@ public class FAQTest extends BaseTest {
         infoSteps.clickSearchDropDownTitle();
 
         Assertions.assertTrue(infoSteps.isFAQTitleDisplayed(questionData.getTitle()));
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(JsonReader.class)
+    @TestData(folder = "faqTest", jsonFile = "serviceMenuData", model = "ServiceMenuData")
+    @Description("Service menu navigation")
+    public void serviceMenuNavigation(ServiceMenuData serviceMenuData) {
+        headerSteps.clickAddressButton();
+        headerSteps.clickServiceMenuItem(serviceMenuData.getItem());
+
+        Assertions.assertTrue(headerSteps.isTitleVDisplayed(serviceMenuData.getTitle()));
     }
 }

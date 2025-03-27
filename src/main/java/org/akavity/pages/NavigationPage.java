@@ -34,6 +34,10 @@ public class NavigationPage {
         return mailListElement;
     }
 
+    public SelenideElement getCategoryListItem(String item) {
+        return $(By.xpath("//div[contains(@class,'list-category')]//span[.='" + item + "']/.."));
+    }
+
     private String getId(String itemML) {
         String id = "";
         switch (itemML.toLowerCase()) {

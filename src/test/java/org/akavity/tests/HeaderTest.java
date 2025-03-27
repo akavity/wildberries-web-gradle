@@ -3,7 +3,10 @@ package org.akavity.tests;
 import io.qameta.allure.Description;
 import org.akavity.annotations.TestData;
 import org.akavity.models.headerTest.*;
-import org.akavity.steps.*;
+import org.akavity.steps.CatalogSteps;
+import org.akavity.steps.GeoSteps;
+import org.akavity.steps.HeaderSteps;
+import org.akavity.steps.NavigationSteps;
 import org.akavity.utils.JsonReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,7 +18,6 @@ public class HeaderTest extends BaseTest {
     NavigationSteps navigationSteps = new NavigationSteps();
     CatalogSteps catalogSteps = new CatalogSteps();
     GeoSteps geoSteps = new GeoSteps();
-    PromoSteps promoSteps = new PromoSteps();
 
     @ParameterizedTest
     @ArgumentsSource(JsonReader.class)
@@ -28,17 +30,6 @@ public class HeaderTest extends BaseTest {
 
         String actual = catalogSteps.extractTextFromTitle();
         Assertions.assertEquals(actual, catalog.getTitle());
-    }
-
-    @ParameterizedTest
-    @ArgumentsSource(JsonReader.class)
-    @TestData(folder = "headerTest", jsonFile = "serviceMenuData", model = "ServiceMenuData")
-    @Description("Service menu navigation")
-    public void serviceMenuNavigation(ServiceMenuData serviceMenuData) {
-        headerSteps.clickAddressButton();
-        headerSteps.clickServiceMenuItem(serviceMenuData.getItem());
-
-        Assertions.assertTrue(headerSteps.isTitleVDisplayed(serviceMenuData.getTitle()));
     }
 
     @ParameterizedTest
@@ -68,7 +59,7 @@ public class HeaderTest extends BaseTest {
         headerSteps.clickCatalogButton();
         navigationSteps.hoverMainListItem(belGoods.getMainListItem());
         navigationSteps.clickDropListItem(belGoods.getMainListItem(), belGoods.getFirstDropListItem(), belGoods.getSecondDropListItem());
-        promoSteps.clickContentItem(belGoods.getFirstContentItem(), belGoods.getSecondContentItem(), belGoods.getThirdContentItem());
+        navigationSteps.clickCategoryListItem(belGoods.getFirstContentItem(), belGoods.getSecondContentItem(), belGoods.getThirdContentItem());
 
         String actual = catalogSteps.extractTextFromTitle();
         Assertions.assertEquals(actual, belGoods.getTitle());

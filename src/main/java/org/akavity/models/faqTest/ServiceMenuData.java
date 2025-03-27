@@ -1,4 +1,4 @@
-package org.akavity.models.headerTest;
+package org.akavity.models.faqTest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
