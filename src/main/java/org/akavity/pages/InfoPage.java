@@ -13,11 +13,12 @@ public class InfoPage {
     }
 
     public SelenideElement getDropDownTitle(String title) {
-        return $(By.xpath("//h2[contains(@class,'dropdown-t') and contains(text(),'" + title + "')]"));
+        return $(By.xpath("//h2[contains(@class,'dropdown-t') and contains(text(),'" + title + "')]/.."));
     }
 
-    public SelenideElement getDropDownContent(String title, String cont) {
-        return $(By.xpath("//h2[contains(@class,'dropdown-titl') and contains(text(),'" + title + "')]/..//p[contains(text(),'" + cont + "')]"));
+    public SelenideElement getDropDownContent(String cont) {  // String title, String cont
+        return $(By.xpath("//h1[@class='faq-title c-h1']/..//p[contains(text(),'" + cont + "')] " +
+                " | //h2[contains(@class,'dropdown-title')]/..//p[contains(text(),'" + cont + "')]"));
     }
 
     // Frequently asked questions (FAQ)

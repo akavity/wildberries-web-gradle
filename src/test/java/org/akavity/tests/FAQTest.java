@@ -28,7 +28,7 @@ public class FAQTest extends BaseTest {
         infoSteps.clickFAQMenuItem(faqData.getFaqMenuItem());
         infoSteps.clickDropDownTitle(faqData.getTitle());                    // without iframe
 
-        Assertions.assertTrue(infoSteps.isDropDownContentDisplayed(faqData.getTitle(), faqData.getContent()));
+        Assertions.assertTrue(infoSteps.isDropDownContentDisplayed(faqData.getContent()));
     }
 
     @ParameterizedTest
@@ -40,7 +40,7 @@ public class FAQTest extends BaseTest {
         infoSteps.clickServiceMenuItem(refundPayment.getMenuItem());
         infoSteps.clickDropDownTitle(refundPayment.getTitle());              // with iframe
 
-        Assertions.assertTrue(infoSteps.isDropDownContentDisplayed(refundPayment.getTitle(), refundPayment.getContent()));
+       Assertions.assertTrue(infoSteps.isDropDownContentDisplayed(refundPayment.getContent()));
     }
 
     @ParameterizedTest
