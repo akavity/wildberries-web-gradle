@@ -19,21 +19,21 @@ public class ProductSteps {
 
     @Step
     public void clickQuestionsButton() {
-        utils.sleep(1000);
+        utils.sleep(1500);
         log.info("Click questions button");
         productPage.getQuestionsButton().scrollTo().click();
     }
 
     @Step
     public void clickViewAllCommentsButton() {
-        utils.sleep(1300);
+        utils.sleep(1500);
         log.info("Click \"View All Comments\" button");
         productPage.getViewAllCommentsButton().scrollIntoView(PARAMETER).click();
     }
 
     @Step
     public void clickViewAllQuestionButton() {
-        utils.sleep(1300);
+        utils.sleep(1500);
         log.info("CLick \"View All Question\" button");
         productPage.getViewAllQuestionsButton().scrollIntoView(PARAMETER).click();
     }

@@ -52,7 +52,7 @@ public class InfoSteps {
             log.info("Switch to iframe");
             switchTo().frame(infoPage.getServiceIframe());                     // Service iframe
         }
-        infoPage.getDropDownTitle(title).shouldBe(clickable, Duration.ofSeconds(3)).click();
+        infoPage.getDropDownTitle(title).shouldBe(clickable, Duration.ofSeconds(5)).click();
     }
 
     @Step
