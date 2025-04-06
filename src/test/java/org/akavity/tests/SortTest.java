@@ -2,9 +2,10 @@ package org.akavity.tests;
 
 import io.qameta.allure.Description;
 import org.akavity.annotations.TestData;
+import org.akavity.models.sortTest.AscendingPriceData;
 import org.akavity.models.sortTest.PriceData;
 import org.akavity.steps.CatalogSteps;
-import org.akavity.steps.FilterDropDownSteps;
+import org.akavity.steps.FiltersBlockSteps;
 import org.akavity.steps.HeaderSteps;
 import org.akavity.steps.NavigationSteps;
 import org.akavity.utils.JsonReader;
@@ -16,7 +17,7 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 public class SortTest extends BaseTest {
     HeaderSteps headerSteps = new HeaderSteps();
     NavigationSteps navigationSteps = new NavigationSteps();
-    FilterDropDownSteps filterDDSteps = new FilterDropDownSteps();
+    FiltersBlockSteps filtersBlockSteps = new FiltersBlockSteps();
     CatalogSteps catalogSteps = new CatalogSteps();
 
     @ParameterizedTest
@@ -27,9 +28,23 @@ public class SortTest extends BaseTest {
         headerSteps.clickCatalogButton();
         navigationSteps.clickMainListItem(price.getMainListItem());
         navigationSteps.clickDropListItem(price.getMainListItem(), price.getFirstDropListItem(), price.getSecondDropListItem());
-        filterDDSteps.clickButtonDDF(price.getButton());
-        filterDDSteps.enterMinMaxAmount(price.getMinPrice(), price.getMaxPrice());
+        filtersBlockSteps.clickFilterButton(price.getButton());
+        filtersBlockSteps.enterMinMaxAmount(price.getMinPrice(), price.getMaxPrice());
 
         Assertions.assertTrue(catalogSteps.areProductPricesWithinLimit(price.getMinPrice(), price.getMaxPrice()));
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(JsonReader.class)
+    @TestData(jsonFile = "ascendingPriceData", model = "AscendingPriceData", folder = "sortTest")
+    @Description("Sort products by ascending price")
+    public void sortByAscendingPrice(AscendingPriceData ascendingPrice) {
+        headerSteps.clickCatalogButton();
+        navigationSteps.clickMainListItem(ascendingPrice.getMainListItem());
+        navigationSteps.clickDropListItem(ascendingPrice.getMainListItem(), ascendingPrice.getFirstDropListItem(), ascendingPrice.getSecondDropListItem());
+        filtersBlockSteps.clickSorterButton();
+        filtersBlockSteps.selectSortType(ascendingPrice.getSortType());
+
+        Assertions.assertTrue(catalogSteps.checkSortByAscendingPrice(ascendingPrice.getElements()));
     }
 }
