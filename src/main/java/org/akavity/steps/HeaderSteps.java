@@ -16,6 +16,7 @@ public class HeaderSteps {
 
     @Step
     public void clickCatalogButton() {
+        utils.sleep(1600);
         log.info("Click catalog button");
         headerPage.getCatalogButton().shouldBe(clickable).click();
     }
