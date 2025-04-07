@@ -20,6 +20,7 @@
 * Test 16. Sort products by ascending price.
 * Test 17. Sort products by decreasing price.
 * Test 18. Sort products by newness.
+* Test 19. Sort products by rating.
 
 
 ## Technologies:

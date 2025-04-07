@@ -2,10 +2,7 @@ package org.akavity.tests;
 
 import io.qameta.allure.Description;
 import org.akavity.annotations.TestData;
-import org.akavity.models.sortTest.AscendingPriceData;
-import org.akavity.models.sortTest.DecreasingPriceData;
-import org.akavity.models.sortTest.NoveltyData;
-import org.akavity.models.sortTest.PriceData;
+import org.akavity.models.sortTest.*;
 import org.akavity.steps.CatalogSteps;
 import org.akavity.steps.FiltersBlockSteps;
 import org.akavity.steps.HeaderSteps;
@@ -76,5 +73,19 @@ public class SortTest extends BaseTest {
         filtersBlockSteps.selectSortType(noveltyData.getSortType());
 
         Assertions.assertTrue(catalogSteps.checkNewTips(noveltyData.getElements()));
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(JsonReader.class)
+    @TestData(jsonFile = "ratingData", model = "RatingData", folder = "sortTest")
+    @Description("Sort products by rating")
+    public void sortByRating(RatingData ratingData) {
+        headerSteps.clickCatalogButton();
+        navigationSteps.clickMainListItem(ratingData.getMainListItem());
+        navigationSteps.clickDropListItem(ratingData.getMainListItem(), ratingData.getFirstDropListItem(), ratingData.getSecondDropListItem());
+        filtersBlockSteps.clickSorterButton();
+        filtersBlockSteps.selectSortType(ratingData.getSortType());
+
+        Assertions.assertTrue(catalogSteps.checkRatingTips(ratingData.getElements(), ratingData.getMinRating()));
     }
 }
