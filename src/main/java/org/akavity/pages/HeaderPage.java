@@ -7,6 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class HeaderPage {
     private final SelenideElement catalogButton = $(By.cssSelector("button[data-wba-header-name='Catalog']"));
+    private final SelenideElement mailList = $(By.cssSelector("ul[class='menu-burger__main-list']"));
     private final SelenideElement searchField = $(By.cssSelector("input[id='searchInput']"));
     private final SelenideElement loupeButton = $(By.cssSelector("button[id='applySearchBtn']"));
     private final SelenideElement addressButton = $(By.cssSelector("div[class*='item-addresses']"));
@@ -33,6 +34,10 @@ public class HeaderPage {
 
     public SelenideElement getCatalogButton() {
         return catalogButton;
+    }
+
+    public SelenideElement getMailList() {
+        return mailList;
     }
 
     public SelenideElement getSearchField() {

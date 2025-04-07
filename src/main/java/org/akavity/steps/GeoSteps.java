@@ -8,7 +8,6 @@ import org.akavity.utils.Utils;
 import java.time.Duration;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.clickable;
 import static com.codeborne.selenide.Condition.visible;
 
 @Log4j2
