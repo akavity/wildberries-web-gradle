@@ -21,7 +21,7 @@ public class HeaderPage {
     }
 
     public SelenideElement getServiceMenuTitle(String title) {
-        return $(By.xpath("//div[@class='service-page-iframe']//h1[contains(text(),'" + title + "')]"));
+        return $(By.xpath("//h1[contains(text(),'" + title + "')]"));
     }
 
     public SelenideElement getCurrencyItem(String item) {

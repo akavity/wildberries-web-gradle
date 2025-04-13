@@ -8,11 +8,10 @@ import org.akavity.utils.Utils;
 @Log4j2
 public class PopupSteps {
     PopupPage popupPage = new PopupPage();
-    Utils utils = new Utils();
 
     @Step
     public boolean isPopupBlockDisplayed() {
-        utils.sleep(1000);
+        Utils.sleep(1000);
         boolean res = popupPage.getPopupBlock().isDisplayed();
         log.info("Is popup block displayed: {}", res);
         return res;
@@ -20,7 +19,7 @@ public class PopupSteps {
 
     @Step
     public double getProductPrice() {
-        double price = utils.extractDoubleFromText(popupPage.getProductPrice().text());
+        double price = Utils.extractDoubleFromText(popupPage.getProductPrice().text());
         log.info("Popup product price: {}", price);
         return price;
     }

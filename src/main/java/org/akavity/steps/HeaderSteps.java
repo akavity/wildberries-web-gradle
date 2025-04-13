@@ -5,18 +5,16 @@ import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.HeaderPage;
 import org.akavity.utils.Utils;
 
-import static com.codeborne.selenide.Condition.clickable;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.switchTo;
 
 @Log4j2
 public class HeaderSteps {
     HeaderPage headerPage = new HeaderPage();
-    Utils utils = new Utils();
 
     @Step
     public void clickCatalogButton() {
-        utils.sleep(1600);
+        Utils.sleep(1600);
         log.info("Click catalog button");
         headerPage.getCatalogButton().shouldBe(clickable).click();
     }
@@ -47,9 +45,11 @@ public class HeaderSteps {
 
     @Step
     public boolean isTitleVDisplayed(String title) {
-        utils.sleep(2000);
+        Utils.sleep(2000);
         log.info("Switch to frame");
-        switchTo().frame(headerPage.getIframe());                               //  iframe
+        if (headerPage.getIframe().is(exist)) {
+            switchTo().frame(headerPage.getIframe());
+        }
         boolean result = headerPage.getServiceMenuTitle(title).isDisplayed();
         log.info("Is the title displayed: {}", result);
         return result;
@@ -72,7 +72,7 @@ public class HeaderSteps {
 
     @Step
     public boolean isAddressPickUpPointDisplayed(String address) {
-        utils.sleep(2000);
+        Utils.sleep(2000);
         log.info("Check address of pick up point");
         boolean res = headerPage.getGeolocationButtonByText(address).isDisplayed();
         if (res == true) {

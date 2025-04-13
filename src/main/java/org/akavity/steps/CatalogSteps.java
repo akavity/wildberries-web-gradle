@@ -16,7 +16,6 @@ import static com.codeborne.selenide.Condition.visible;
 @Log4j2
 public class CatalogSteps {
     CatalogPage catalogPage = new CatalogPage();
-    Utils utils = new Utils();
 
     @Step
     public String extractTextFromTitle() {
@@ -28,10 +27,10 @@ public class CatalogSteps {
     @Step
     public boolean areProductPricesWithinLimit(String min, String max) {
         log.info("Check product prices \n min price: {} \n max price: {}", min, max);
-        utils.sleep(1500);
+        Utils.sleep(1500);
         ElementsCollection prices = catalogPage.getPricesFields();
         Predicate<Double> predicate = p -> (p >= Integer.parseInt(min) && p <= Integer.parseInt(max));
-        return utils.relationalMethod(prices, predicate);
+        return Utils.relationalMethod(prices, predicate);
     }
 
     @Step
@@ -79,7 +78,7 @@ public class CatalogSteps {
     public void clickFirstPopupButton() {
         log.info("Hover over the first product card");
         catalogPage.getProductCards().first().hover();
-        utils.sleep(1000);
+        Utils.sleep(1000);
         log.info("Click \"Popup\" button");
         catalogPage.getPopupButtons().first().click();
     }
@@ -93,7 +92,7 @@ public class CatalogSteps {
 
     @Step
     public double getFirstProductCardPrice() {
-        double price = utils.extractDoubleFromText(catalogPage.getPricesFields().first().text());
+        double price = Utils.extractDoubleFromText(catalogPage.getPricesFields().first().text());
         log.info("Price of the first product card: {}", price);
         return price;
     }
@@ -106,7 +105,7 @@ public class CatalogSteps {
 
     @Step
     public void clickFirstButtonOfSizeList() {
-        utils.sleep(1500);
+        Utils.sleep(1500);
         boolean popUp = catalogPage.getPopupBlock().isDisplayed();
         if (popUp) {
             log.info("Popup block is displayed. Click first button of size list");
@@ -118,23 +117,23 @@ public class CatalogSteps {
 
     @Step
     public boolean checkSortByAscendingPrice(int elements) {
-        utils.sleep(1500);
-        boolean result = utils.isSortedAscending(getProductPrices(elements));
+        Utils.sleep(1500);
+        boolean result = Utils.isSortedAscending(getProductPrices(elements));
         log.info("Are first \" {} \" products sorted correctly in ascending price order?: {}", elements, result);
         return result;
     }
 
     @Step
     public boolean checkSortByDecreasingPrice(int elements) {
-        utils.sleep(1500);
-        boolean result = utils.isSortedDecreasing(getProductPrices(elements));
+        Utils.sleep(1500);
+        boolean result = Utils.isSortedDecreasing(getProductPrices(elements));
         log.info("Are first \" {} \" products sorted correctly in decreasing price order?: {}", elements, result);
         return result;
     }
 
     @Step
     public boolean checkNewTips(int elements) {
-        utils.sleep(1500);
+        Utils.sleep(1500);
         return catalogPage.getNewTips().first(elements).stream()
                 .map(SelenideElement::getText)
                 .peek(x -> log.info("tip contain text: {}", x))
@@ -143,17 +142,17 @@ public class CatalogSteps {
 
     @Step
     public boolean checkRatingTips(int elements, double minRating) {
-        utils.sleep(1500);
+        Utils.sleep(1500);
         return catalogPage.getProductRatings().first(elements).stream()
                 .map(SelenideElement::getText)
-                .map(utils::extractDoubleFromText)
+                .map(Utils::extractDoubleFromText)
                 .peek(x -> log.info("tip contain rating: {}", x))
                 .allMatch(x -> x >= minRating);
     }
 
     @Step
     public boolean checkSaleTips(int elements) {
-        utils.sleep(1500);
+        Utils.sleep(1500);
         return catalogPage.getSaleTips().first(elements).stream()
                 .map(SelenideElement::getText)
                 .peek(x -> log.info("Sale tip contains: {}", x))
@@ -162,7 +161,7 @@ public class CatalogSteps {
 
     private List<Double> getProductPrices(int elements) {
         return catalogPage.getPricesFields().first(elements).texts().stream()
-                .map(x -> utils.extractDoubleFromText(x))
+                .map(Utils::extractDoubleFromText)
                 .peek(x -> log.info("product price: {}", x)).toList();
     }
 }
