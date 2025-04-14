@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 @Log4j2
 public class Utils {
-    public void sleep(int millis) {
+    public static void sleep(int millis) {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
@@ -18,7 +18,7 @@ public class Utils {
         }
     }
 
-    public boolean relationalMethod(ElementsCollection col, Predicate<Double> predicate) {
+    public static boolean relationalMethod(ElementsCollection col, Predicate<Double> predicate) {
         boolean result;
         if (col.isEmpty()) {
             log.info("Collection is empty");
@@ -33,7 +33,7 @@ public class Utils {
         return result;
     }
 
-    public double extractDoubleFromText(String text) {
+    public static double extractDoubleFromText(String text) {
         double result = 0.0;
         Pattern pattern = Pattern.compile("\\d?[  ]?\\d+([,.]\\d{1,2})?");
         Matcher matcher = pattern.matcher(text);
@@ -46,7 +46,7 @@ public class Utils {
         return result;
     }
 
-    public boolean isSortedAscending(List<Double> list) {
+    public static boolean isSortedAscending(List<Double> list) {
         boolean result = true;
         for (int i = 0; i < list.size() - 1; i++) {
             if (list.get(i) > list.get(i + 1)) {
@@ -57,7 +57,7 @@ public class Utils {
         return result;
     }
 
-    public boolean isSortedDecreasing(List<Double> list) {
+    public static boolean isSortedDecreasing(List<Double> list) {
         boolean result = true;
         for (int i = 0; i < list.size() - 1; i++) {
             if (list.get(i) < list.get(i + 1)) {

@@ -9,7 +9,6 @@ import org.akavity.utils.Utils;
 public class ProductSteps {
     String PARAMETER = "{behavior: \"instant\", block: \"center\", inline: \"center\"}";
     ProductPage productPage = new ProductPage();
-    Utils utils = new Utils();
 
     @Step
     public void clickCommentsButton() {
@@ -19,21 +18,21 @@ public class ProductSteps {
 
     @Step
     public void clickQuestionsButton() {
-        utils.sleep(1500);
+        Utils.sleep(1500);
         log.info("Click questions button");
         productPage.getQuestionsButton().scrollTo().click();
     }
 
     @Step
     public void clickViewAllCommentsButton() {
-        utils.sleep(1500);
+        Utils.sleep(1500);
         log.info("Click \"View All Comments\" button");
         productPage.getViewAllCommentsButton().scrollIntoView(PARAMETER).click();
     }
 
     @Step
     public void clickViewAllQuestionButton() {
-        utils.sleep(1500);
+        Utils.sleep(1500);
         log.info("CLick \"View All Question\" button");
         productPage.getViewAllQuestionsButton().scrollIntoView(PARAMETER).click();
     }

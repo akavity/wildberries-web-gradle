@@ -13,7 +13,6 @@ import static com.codeborne.selenide.Selenide.switchTo;
 @Log4j2
 public class InfoSteps {
     InfoPage infoPage = new InfoPage();
-    Utils utils = new Utils();
 
     @Step
     public void clickServiceMenuItem(String item) {
@@ -23,7 +22,7 @@ public class InfoSteps {
 
     @Step
     public void clickFAQMenuItem(String item) {
-        utils.sleep(1500);
+        Utils.sleep(1500);
         log.info("Click FAQ menu item: {}", item);
         switchTo().frame(infoPage.getServiceIframe());                     // Service iframe
         infoPage.getFAQMenuItem(item).shouldBe(clickable, Duration.ofSeconds(4)).click();
@@ -32,7 +31,7 @@ public class InfoSteps {
 
     @Step
     public boolean isFAQTitleDisplayed(String title) {
-        utils.sleep(1000);
+        Utils.sleep(1000);
         boolean res = infoPage.getFAQTitle(title).isDisplayed();
         log.info("Is FAQ title displayed: {}", res);
         return res;
@@ -47,7 +46,7 @@ public class InfoSteps {
     @Step
     public void clickDropDownTitle(String title) {
         log.info("Click dropdown title: {}", title);
-        utils.sleep(1500);
+        Utils.sleep(1500);
         if (infoPage.getServiceIframe().exists()) {
             log.info("Switch to iframe");
             switchTo().frame(infoPage.getServiceIframe());                     // Service iframe
@@ -63,7 +62,7 @@ public class InfoSteps {
 
     @Step
     public boolean isDropDownContentDisplayed(String cont) {
-        utils.sleep(1000);
+        Utils.sleep(1000);
         boolean result = infoPage.getDropDownContent(cont).isDisplayed();
         log.info("Dropdown content displayed: {}", result);
         return result;

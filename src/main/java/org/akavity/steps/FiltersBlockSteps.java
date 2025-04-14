@@ -8,7 +8,6 @@ import org.akavity.utils.Utils;
 @Log4j2
 public class FiltersBlockSteps {
     FiltersBlockPage filter = new FiltersBlockPage();
-    Utils utils = new Utils();
 
     @Step
     public void clickFilterButton(String button) {
@@ -19,7 +18,7 @@ public class FiltersBlockSteps {
     @Step
     public void clickSorterButton() {
         log.info("Click sorter button");
-        utils.sleep(1200);
+        Utils.sleep(1200);
         filter.getSorterButton().click();
     }
 
