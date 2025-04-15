@@ -34,3 +34,7 @@
 * Apache Log4j 2.24.3
 * Gson 2.12.0
 * Project Lombok 1.18.36
+
+## Report:
+
+![report2.jpg](https://github.com/akavity/wildberries-web-gradle/raw/develop/report2.jpg)
